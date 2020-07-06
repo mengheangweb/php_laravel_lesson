@@ -1,9 +1,11 @@
 <?php 
 
-class Request 
-{
-	public static function uri()
+class Request {
+
+	public function uri() 
 	{
-		return trim($_SERVER['REQUEST_URI'],'/');
+		$uri = trim($_SERVER['REQUEST_URI'], '/');
+
+		return $uri;
 	}
 }

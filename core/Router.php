@@ -1,31 +1,22 @@
 <?php 
 
-class Router 
-{
-	protected $routes = [];
+Class router {
 
-	public static function load($file)
+	public $routes = []; 
+
+	public function define($routes)
 	{
-		$router = new static;
-
-		require $file;
-
-		return $router;
+		return $this->routes = $routes;
 	}
 
-	public function define($routes) 
-	{
-		$this->routes = $routes;
-	}
-
-	public function direct($uri)
+	public function redirect($uri) 
 	{
 		if(array_key_exists($uri, $this->routes))
 		{
 			return $this->routes[$uri];
 		}
 
-		throw new exception('No route found');
-	} 
 
+		die('No route found in the app');
+	}
 }

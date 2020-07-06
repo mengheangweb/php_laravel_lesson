@@ -1,6 +1,11 @@
 <?php 
 
-$router->define([
-	'' => 'controller/article.php',
-	'about-us' => 'controller/about.php'
-]);
+$routes = [
+	"" => "controllers/article.php",
+	"about-us" => "controllers/about.php",
+	"contact-us" => "controllers/contact.php",
+	"work-with-us" => "controllers/career.php",
+];
+
+
+$router->define($routes);
