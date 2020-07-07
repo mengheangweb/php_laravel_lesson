@@ -6,7 +6,7 @@ require "portial/header.view.php";
 
 <h2>Article</h2>
 
-<a class="btn btn-info mb-2">Add new </a>
+<a href="/new-article" class="btn btn-info mb-2">Add new </a>
 
 <table class="table">
 	

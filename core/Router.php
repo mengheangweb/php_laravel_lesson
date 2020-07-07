@@ -2,18 +2,31 @@
 
 Class router {
 
-	public $routes = []; 
+	public $routes = [
+		"POST" => [],
+		"GET" => []
+	]; 
+
+	public function get($uri, $controller)
+	{
+		return $this->routes["GET"][$uri] = $controller;
+	}
+
+	public function post($uri, $controller)
+	{
+		return $this->routes["POST"][$uri] = $controller;
+	}
 
 	public function define($routes)
 	{
 		return $this->routes = $routes;
 	}
 
-	public function redirect($uri) 
+	public function redirect($uri, $method) 
 	{
-		if(array_key_exists($uri, $this->routes))
+		if(array_key_exists($uri, $this->routes[$method]))
 		{
-			return $this->routes[$uri];
+			return $this->routes[$method][$uri];
 		}
 
 

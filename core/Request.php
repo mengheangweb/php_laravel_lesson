@@ -8,4 +8,9 @@ class Request {
 
 		return $uri;
 	}
+
+	public function method() 
+	{
+		return $_SERVER["REQUEST_METHOD"];
+	}
 }

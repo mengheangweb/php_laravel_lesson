@@ -20,4 +20,9 @@ Class queryBuilder {
 
 		return $query->fetchAll(PDO::FETCH_OBJ);
 	}
+
+	public function insert()
+	{
+		
+	}
 }

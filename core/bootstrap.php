@@ -10,8 +10,10 @@
 	require('core/database/queryBuilder.php');
 	require('core/function.php');
 
+	$app['connection'] = connection::make($app['config']);
+
 	$app['database'] = new queryBuilder(
-		connection::make($app['config'])
+		$app['connection']
 	);
 
 
