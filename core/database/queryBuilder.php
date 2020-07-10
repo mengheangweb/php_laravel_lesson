@@ -1,7 +1,10 @@
 <?php 
 
+namespace App\core\database;
 
-Class queryBuilder {
+use PDO;
+
+Class QueryBuilder {
 
 	protected $pdo;
 

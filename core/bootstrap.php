@@ -1,20 +1,49 @@
 <?php 
 
-	$app = [];
-	
-	$app['config'] = require('config.php');
+	use App\core\App;
+	use App\core\database\Connection;
+	use App\core\database\QueryBuilder;
 
-	require('core/router.php');
-	require('core/request.php');
-	require('core/database/connection.php');
-	require('core/database/queryBuilder.php');
-	require('core/function.php');
+	App::bind('config', require('config.php'));
 
-	$app['connection'] = connection::make($app['config']);
+	App::bind('connection', Connection::make(App::get('config')));
 
-	$app['database'] = new queryBuilder(
-		$app['connection']
-	);
+	App::bind('database', new QueryBuilder(
+		App::get('connection')
+	));
+
+
+	function odd_number($item) {
+		if($item % 2 == 0 ){
+
+			// return "Odd Number";
+			return true;
+		}else{
+			// return "Even Number";
+			return false;
+		}
+	}
+
+	function format_var_dump($item) {
+		echo "<pre>";
+
+		var_dump($item);
+
+		echo "<pre>";
+	}
+
+	function redirect($location) 
+	{
+		return header("location:". $location);;
+	}
+
+	function view($name, $data = [])
+	{
+		extract($data);
+
+		return require "app/views/{$name}.view.php";
+	}
+
 
 
 

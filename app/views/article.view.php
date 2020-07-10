@@ -4,7 +4,7 @@ require "portial/header.view.php";
 
 ?>
 
-<h2>Article</h2>
+<h2 class="article-title">Article</h2>
 
 <a href="/new-article" class="btn btn-info mb-2">Add new </a>
 
@@ -36,7 +36,7 @@ require "portial/header.view.php";
 
 			<tr class="<?= $row_odd ? 'bg-light' : '' ?>">
 				<td><?= $key+1 ?></td>
-				<td><img src="/image/<?= $value->thumbnail ? : 'thumbnail.png' ?>" width="50"></td>
+				<td><img src="/public/image/<?= $value->thumbnail ? : 'thumbnail.png' ?>" width="50"></td>
 				<td><?= ucfirst($value->title) ?></td>
 				<td><?= $value->description ?></td>
 				<td>
@@ -70,9 +70,10 @@ require "portial/header.view.php";
 
 </table>
 
-
 <?php 
 
 require "portial/footer.view.php";
 
 ?>
+
+

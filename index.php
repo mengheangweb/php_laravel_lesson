@@ -1,10 +1,13 @@
 <?php 
 
+require "vendor/autoload.php";
+
+
 $query = require ("core/bootstrap.php");
 
-$router = new Router();
+$router = new App\core\Router();
 
-$routes = require "routes.php";
+$routes = require "app/routes.php";
 
-require $router->redirect(Request::uri(), Request::method());
+$router->redirect(App\core\Request::uri(), App\core\Request::method());
 

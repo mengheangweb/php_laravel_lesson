@@ -4,7 +4,7 @@ require "portial/header.view.php";
 
 ?>
 
-	<h1>Add new article</h1>
+	<h1 class="article-title">Add new article</h1>
 
 	<form action="/add-article" method="post">
 	  <div class="form-group">
@@ -16,6 +16,7 @@ require "portial/header.view.php";
 	    <textarea class="form-control" name="description" ></textarea>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <a href="/" class="btn btn-info">Cancel</a>
 	</form>
 
 <?php 
