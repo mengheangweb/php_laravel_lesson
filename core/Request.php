@@ -6,7 +6,10 @@ class Request {
 
 	public function uri() 
 	{
-		$uri = trim($_SERVER['REQUEST_URI'], '/');
+		$uri = strtok($_SERVER["REQUEST_URI"], '?');
+
+		$uri = trim($uri, '/');
+
 
 		return $uri;
 	}

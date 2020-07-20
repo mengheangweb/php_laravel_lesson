@@ -4,7 +4,9 @@ require "portial/header.view.php";
 
 ?>
 
-<h2 class="article-title">Article</h2>
+<h2 id="title" class="article-title">Article</h2>
+
+<p id="subtitle">Sub Title of The Article</p>
 
 <a href="/new-article" class="btn btn-info mb-2">Add new </a>
 
@@ -12,11 +14,12 @@ require "portial/header.view.php";
 	
 	<tr>
 		<thead>
-			<td>#</td>
-			<td>Title</td>
-			<td>Description</td>
-			<td>Status</td>
-			<td>Option</td>
+			<td id="now_number">#</td>
+			<td id="now_number">Thubnail</td>
+			<td id="now_number">Title</td>
+			<td class="header">Description</td>
+			<td class="header">Status</td>
+			<td class="header">Option</td>
 		</thead>
 	</tr>
 
@@ -59,8 +62,8 @@ require "portial/header.view.php";
 					?>
 				</td>
 				<td>
-					<a class="btn btn-info">Edit</a>
-					<a class="btn btn-danger">Delete</a>
+					<a href="/edit-article?id=<?= $value->id ?>" class="btn btn-info">Edit</a>
+					<a class="btn btn-danger" ref="<?= $value->id ?>">Delete</a>
 				</td>
 			</tr>
 			<?php
@@ -69,6 +72,58 @@ require "portial/header.view.php";
 	?>
 
 </table>
+
+<script>
+
+
+$(document).ready(function() {
+
+	$('.btn.btn-danger').click(function() {
+		if(confirm('Are you sure?')){
+
+			var delete_item = $(this);
+			//
+			var id = $(this).attr('ref');
+
+			$.ajax({
+					url: "/delete-article?id=" + id,
+					type: "GET",
+					success: function (result) {
+
+						var message = JSON.parse(result);
+
+						if(message.message == "success") 
+						{
+							delete_item.parent('td').parent('tr').remove();
+							$(this).closest('td')
+						}else{
+							alert('something went wrong');
+						}
+					},
+					error: function() {
+						alert('something went wrong');
+					}
+				});
+
+			//
+		}
+	});
+
+	// $('#title').hide();
+
+	$('#now_number').addClass("bg-danger")
+	$('.header').addClass("bg-info");
+
+	$('#title').click(function () {
+
+		$(this).prepend(" News");
+	});
+
+
+});
+
+
+</script>
 
 <?php 
 
